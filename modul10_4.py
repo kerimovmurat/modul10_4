@@ -13,17 +13,17 @@ class Table:
 
 class Guest (Thread):
     def __init__(self, name):
-        super ().__init__ ()
+        super().__init__()
         self.name = name
 
     def run(self):
-        time.sleep (randint (3, 10))
+        time.sleep(randint (3, 10))
 
 
 class Cafe:
     def __init__(self, *tables):
-        self.queue = Queue ()
-        self.tables = list (tables)
+        self.queue = Queue()
+        self.tables = list(tables)
 
     def guest_arrival(self, *guests):
         for guest in guests:
@@ -40,7 +40,7 @@ class Cafe:
                 print(f'{guest.name} в очереди')
 
     def discuss_guests(self):
-        while not self.queue.empty() or any (table.guest is not None for table in self.tables):
+        while not self.queue.empty() or any(table.guest is not None for table in self.tables):
             for table in self.tables:
                 if table.guest is not None and not table.guest.is_alive():
                     print(f'{table.guest.name} покушал(-а) и ушел(ушла)')
@@ -63,11 +63,11 @@ guests_names = [
 # Создание гостей
 guests = [Guest (name) for name in guests_names]
 # Заполнение кафе столами
-cafe = Cafe (*tables)
+cafe = Cafe(*tables)
 # Приём гостей
-cafe.guest_arrival (*guests)
+cafe.guest_arrival(*guests)
 # Обслуживание гостей
-cafe.discuss_guests ()
+cafe.discuss_guests()
 
 
 
