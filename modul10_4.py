@@ -17,7 +17,7 @@ class Guest (Thread):
         self.name = name
 
     def run(self):
-        time.sleep(randint (3, 10))
+        time.sleep(randint(3, 10))
 
 
 class Cafe:
